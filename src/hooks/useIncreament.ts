@@ -31,7 +31,7 @@ const useIncreament = (startValue: number, endValue: number): number => {
                 cancelAnimationFrame(animationFrameRef.current)
             }
         }
-    }, [startValue, endValue])
+    }, [startValue])
 
     return value
 }
