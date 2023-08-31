@@ -11,7 +11,7 @@ const useIncreament = (startValue: number, endValue: number): number => {
             if (!startTimeRef.current) {
                 startTimeRef.current = timestamp
             }
-            
+
             const elapsedTime = timestamp - startTimeRef.current
             const progress = elapsedTime / duration
             const diff = endValue - startValue
@@ -31,7 +31,7 @@ const useIncreament = (startValue: number, endValue: number): number => {
                 cancelAnimationFrame(animationFrameRef.current)
             }
         }
-    }, [startValue])
+    }, [startValue, endValue])
 
     return value
 }
