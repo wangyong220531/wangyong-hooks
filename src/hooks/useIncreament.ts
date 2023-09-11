@@ -6,7 +6,7 @@ const useIncreament = (initialTargetValue: number, duration: number): [number, (
     const startTimeRef = useRef<number | null>(null)
     const animationFrameRef = useRef<number | null>(null)
     const startValueRef = useRef<number>(0)
-    const [isIt, setIsIt] = useState(false)
+    const [isChanged, setIsChanged] = useState(false)
 
     useEffect(() => {
         const startAnimation = (timestamp: number) => {
@@ -34,7 +34,7 @@ const useIncreament = (initialTargetValue: number, duration: number): [number, (
 
         startValueRef.current = value
 
-        if (!isIt) {
+        if (!isChanged) {
             targetValueRef.current = initialTargetValue
         }
 
@@ -45,14 +45,14 @@ const useIncreament = (initialTargetValue: number, duration: number): [number, (
         return () => {
             if (animationFrameRef.current) {
                 cancelAnimationFrame(animationFrameRef.current)
-                setIsIt(false)
+                setIsChanged(false)
             }
         }
     }, [targetValueRef.current])
 
     const changeValue = (e: number) => {
         targetValueRef.current = e
-        setIsIt(true)
+        setIsChanged(true)
     }
 
     return [value, changeValue]
